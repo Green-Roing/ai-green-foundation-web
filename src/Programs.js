@@ -52,7 +52,7 @@ export default function Programs({ programTitle, programDesc, programBody, image
                     </p>
                 </div>
 
-                <a
+                <button
                     className="btn"
                     onClick={toggleOverlay}
                     style={{
@@ -60,7 +60,7 @@ export default function Programs({ programTitle, programDesc, programBody, image
                         color: 'white',
                         padding: '12px 24px',
                         borderRadius: '8px',
-                        textDecoration: 'none',
+                        border: 'none',
                         fontSize: '1rem',
                         fontWeight: 'bold',
                         marginTop: 'auto',
@@ -68,13 +68,14 @@ export default function Programs({ programTitle, programDesc, programBody, image
                         alignItems: 'center',
                         justifyContent: 'center',
                         transition: 'all 0.3s ease',
+                        cursor: 'pointer',
                     }}
                     onMouseEnter={(e) => (e.target.style.transform = 'scale(1.05)')}
                     onMouseLeave={(e) => (e.target.style.transform = 'scale(1)')}
                 >
                     Learn More
                     <i className="fas fa-arrow-right" style={{ marginLeft: '8px' }}></i> {/* Add arrow icon */}
-                </a>
+                </button>
 
             </div>
 
