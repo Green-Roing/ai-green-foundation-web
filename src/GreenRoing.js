@@ -55,7 +55,7 @@ export default function GreenRoing() {
         <div className="green-roing-summary">
             <div className="col-12 mb-4 logo-section">
                 <img
-                    src={`${process.env.PUBLIC_URL}/Green Roing- Logo.png`}
+                    src={`${process.env.PUBLIC_URL}/grLogo.png`}
                     alt="AI Green Foundation"
                     className="green-roing-logo"
                 />

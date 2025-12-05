@@ -35,7 +35,7 @@ const MobileApp = () => {
           }}
         >
           Join millions of users making a positive environmental impact. Track
-          your green activities, earn rewards, and contribute to a sustainable
+          your green activities, and contribute to a sustainable
           future.
         </p>
 
@@ -231,7 +231,7 @@ const MobileApp = () => {
                     color: "white",
                   }}
                 >
-                  50K+
+                  1.5K+
                 </div>
                 <div style={{ opacity: "0.8" }}>Downloads</div>
               </div>
@@ -255,7 +255,7 @@ const MobileApp = () => {
                     color: "white",
                   }}
                 >
-                  25K+
+                  1K+
                 </div>
                 <div style={{ opacity: "0.8" }}>Active Users</div>
               </div>
