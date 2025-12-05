@@ -54,7 +54,13 @@ export default function Programs({ programTitle, programDesc, programBody, image
 
                 <button
                     className="btn"
-                    onClick={toggleOverlay}
+                    onClick={() => {
+                        if (programTitle === "Green Roing Initiative") {
+                            window.open("https://greenroing.aigreenfoundation.com/", "_blank");
+                        } else {
+                            toggleOverlay();
+                        }
+                    }}
                     style={{
                         background: 'linear-gradient(45deg, #27ae60, #2ecc71)',
                         color: 'white',

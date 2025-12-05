@@ -2,7 +2,7 @@ import Programs from "./Programs";
 
 export default function Projects() {
     const programs = [
-        {
+        {   
             image: "fa fa-globe",
             alt: "Environmental Protection and Awareness",
             programTitle: "Environmental Protection and Awareness",
