@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { motion } from 'framer-motion';
 
 export default function KeyMilestones() {
     const [hoveredMilestone, setHoveredMilestone] = useState(null);
 
-    const milestones = [
+    const milestones = useMemo(() => [
         {
             year: '2022',
             title: 'Green Roing Initiative Launch',
@@ -29,64 +29,70 @@ export default function KeyMilestones() {
             color: '#3498db',
             stats: '50+ villages impacted'
         }
-    ];
+    ], []);
+
+    const containerVariants = {
+        hidden: { opacity: 0 },
+        visible: {
+            opacity: 1,
+            transition: {
+                staggerChildren: 0.15,
+                delayChildren: 0.1
+            }
+        }
+    };
+
+    const cardVariants = {
+        hidden: { opacity: 0, y: 30 },
+        visible: {
+            opacity: 1,
+            y: 0,
+            transition: {
+                duration: 0.4,
+                ease: "easeOut"
+            }
+        }
+    };
 
     return (
         <motion.section 
             style={{
                 padding: '80px 20px',
-              background: "linear-gradient(135deg, #27ae60 0%, #2ecc71 100%)",
+                background: "linear-gradient(135deg, #27ae60 0%, #2ecc71 100%)",
                 position: 'relative',
-                overflow: 'hidden'
+                overflow: 'hidden',
+                scrollBehavior: 'smooth'
             }}
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6 }}
         >
-            {/* Animated background elements */}
-            <motion.div 
+            {/* Simplified background elements */}
+            <div 
                 style={{
                     position: 'absolute',
                     top: '15%',
                     left: '10%',
                     width: '150px',
                     height: '150px',
-                    background: 'radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%)',
-                    borderRadius: '50%'
+                    background: 'radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 70%)',
+                    borderRadius: '50%',
+                    willChange: 'transform'
                 }}
-                animate={{ 
-                    y: [0, -15, 0],
-                    rotate: [0, 180, 360]
-                }}
-                transition={{ 
-                    duration: 8, 
-                    repeat: Infinity, 
-                    ease: "easeInOut" 
-                }}
-            ></motion.div>
+            ></div>
             
-            <motion.div 
+            <div 
                 style={{
                     position: 'absolute',
                     bottom: '20%',
                     right: '15%',
                     width: '100px',
                     height: '100px',
-                    background: 'radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%)',
+                    background: 'radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 70%)',
                     borderRadius: '50%'
                 }}
-                animate={{ 
-                    y: [0, -15, 0],
-                    rotate: [0, -180, -360]
-                }}
-                transition={{ 
-                    duration: 6, 
-                    repeat: Infinity, 
-                    ease: "easeInOut",
-                    delay: 3
-                }}
-            ></motion.div>
+            ></div>
 
             <div style={{
                 maxWidth: '1200px',
@@ -101,27 +107,23 @@ export default function KeyMilestones() {
                         marginBottom: '60px',
                         color: 'white'
                     }}
-                    initial={{ opacity: 0, y: -30 }}
+                    initial={{ opacity: 0, y: -20 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6 }}
+                    viewport={{ once: true, margin: "-50px" }}
+                    transition={{ duration: 0.5 }}
                 >
-                    <motion.h2 
+                    <h2 
                         style={{
                             fontSize: '3rem',
                             fontWeight: 'bold',
                             marginBottom: '20px',
                             textShadow: '2px 2px 4px rgba(0,0,0,0.3)'
                         }}
-                        initial={{ opacity: 0, scale: 0.8 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.6, delay: 0.2 }}
                     >
                         Key Milestones
-                    </motion.h2>
+                    </h2>
                     
-                    <motion.div 
+                    <div 
                         style={{
                             width: '100px',
                             height: '4px',
@@ -129,13 +131,9 @@ export default function KeyMilestones() {
                             margin: '0 auto 30px',
                             borderRadius: '2px'
                         }}
-                        initial={{ width: 0 }}
-                        whileInView={{ width: '100px' }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.8, delay: 0.4 }}
-                    ></motion.div>
+                    ></div>
                     
-                    <motion.p 
+                    <p 
                         style={{
                             fontSize: '1.2rem',
                             opacity: '0.9',
@@ -143,13 +141,9 @@ export default function KeyMilestones() {
                             margin: '0 auto',
                             textShadow: '1px 1px 2px rgba(0,0,0,0.2)'
                         }}
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 0.9, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.6, delay: 0.6 }}
                     >
                         Our journey of environmental transformation and community impact
-                    </motion.p>
+                    </p>
                 </motion.div>
 
                 {/* Cards Grid */}
@@ -160,10 +154,10 @@ export default function KeyMilestones() {
                         gap: '30px',
                         alignItems: 'stretch'
                     }}
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6, delay: 0.4 }}
+                    variants={containerVariants}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, margin: "-100px" }}
                 >
                     {milestones.map((milestone, index) => (
                         <motion.div
@@ -173,29 +167,25 @@ export default function KeyMilestones() {
                                 borderRadius: '20px',
                                 padding: '40px 30px',
                                 boxShadow: hoveredMilestone === index 
-                                    ? '0 25px 50px rgba(0,0,0,0.2)' 
-                                    : '0 15px 35px rgba(0,0,0,0.1)',
+                                    ? '0 20px 40px rgba(0,0,0,0.15)' 
+                                    : '0 10px 25px rgba(0,0,0,0.08)',
                                 transform: hoveredMilestone === index 
-                                    ? 'translateY(-10px) scale(1.02)' 
-                                    : 'translateY(0) scale(1)',
-                                transition: 'all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
+                                    ? 'translateY(-8px)' 
+                                    : 'translateY(0)',
+                                transition: 'all 0.3s ease-out',
                                 cursor: 'pointer',
                                 position: 'relative',
                                 overflow: 'hidden',
-                                backdropFilter: 'blur(10px)',
                                 border: '1px solid rgba(255,255,255,0.2)',
-                                textAlign: 'center'
+                                textAlign: 'center',
+                                willChange: 'transform'
                             }}
                             onMouseEnter={() => setHoveredMilestone(index)}
                             onMouseLeave={() => setHoveredMilestone(null)}
-                            initial={{ opacity: 0, y: 50 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.6, delay: index * 0.2 }}
-                            whileHover={{ y: -10, scale: 1.02 }}
+                            variants={cardVariants}
                         >
                             {/* Decorative background element */}
-                            <motion.div 
+                            <div 
                                 style={{
                                     position: 'absolute',
                                     top: '-50px',
@@ -204,15 +194,12 @@ export default function KeyMilestones() {
                                     height: '100px',
                                     background: `linear-gradient(45deg, ${milestone.color}, ${milestone.color}99)`,
                                     borderRadius: '50%',
-                                    opacity: '0.1',
-                                    transition: 'all 0.3s ease'
+                                    opacity: '0.08'
                                 }}
-                                animate={{ rotate: 360 }}
-                                transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                            ></motion.div>
+                            ></div>
 
                             {/* Year Badge */}
-                            <motion.div 
+                            <div 
                                 style={{
                                     position: 'absolute',
                                     top: '20px',
@@ -225,39 +212,25 @@ export default function KeyMilestones() {
                                     fontWeight: '700',
                                     boxShadow: `0 4px 15px ${milestone.color}40`
                                 }}
-                                initial={{ opacity: 0, x: -20 }}
-                                whileInView={{ opacity: 1, x: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ duration: 0.4, delay: index * 0.2 + 0.2 }}
-                                whileHover={{ scale: 1.1 }}
                             >
                                 {milestone.year}
-                            </motion.div>
+                            </div>
 
                             {/* Icon */}
-                            <motion.div 
+                            <div 
                                 style={{
                                     fontSize: '4rem',
                                     marginBottom: '20px',
                                     filter: 'drop-shadow(0 4px 8px rgba(0,0,0,0.1))',
-                                    transition: 'transform 0.3s ease',
-                                    transform: hoveredMilestone === index ? 'scale(1.1) rotate(5deg)' : 'scale(1)'
+                                    transition: 'transform 0.2s ease',
+                                    transform: hoveredMilestone === index ? 'scale(1.05)' : 'scale(1)'
                                 }}
-                                initial={{ opacity: 0, scale: 0 }}
-                                whileInView={{ opacity: 1, scale: 1 }}
-                                viewport={{ once: true }}
-                                transition={{ 
-                                    type: "spring", 
-                                    stiffness: 200, 
-                                    delay: index * 0.2 + 0.3 
-                                }}
-                                whileHover={{ scale: 1.2, rotate: 10 }}
                             >
                                 {milestone.icon}
-                            </motion.div>
+                            </div>
 
                             {/* Title */}
-                            <motion.h3 
+                            <h3 
                                 style={{
                                     fontSize: '1.5rem',
                                     fontWeight: '700',
@@ -265,32 +238,24 @@ export default function KeyMilestones() {
                                     marginBottom: '20px',
                                     textShadow: '0 2px 4px rgba(0,0,0,0.1)'
                                 }}
-                                initial={{ opacity: 0, y: 20 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ duration: 0.4, delay: index * 0.2 + 0.4 }}
                             >
                                 {milestone.title}
-                            </motion.h3>
+                            </h3>
 
                             {/* Description */}
-                            <motion.p 
+                            <p 
                                 style={{
                                     fontSize: '1rem',
                                     color: '#7f8c8d',
                                     lineHeight: '1.6',
                                     marginBottom: '25px'
                                 }}
-                                initial={{ opacity: 0, y: 20 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ duration: 0.4, delay: index * 0.2 + 0.5 }}
                             >
                                 {milestone.description}
-                            </motion.p>
+                            </p>
 
                             {/* Stats Badge */}
-                            <motion.div 
+                            <div 
                                 style={{
                                     background: `linear-gradient(135deg, ${milestone.color}15, ${milestone.color}05)`,
                                     padding: '15px 20px',
@@ -298,19 +263,16 @@ export default function KeyMilestones() {
                                     border: `2px solid ${milestone.color}30`,
                                     fontSize: '1rem',
                                     fontWeight: '600',
-                                    color: milestone.color
+                                    color: milestone.color,
+                                    transition: 'transform 0.2s ease',
+                                    transform: hoveredMilestone === index ? 'scale(1.02)' : 'scale(1)'
                                 }}
-                                initial={{ opacity: 0, scale: 0.8 }}
-                                whileInView={{ opacity: 1, scale: 1 }}
-                                viewport={{ once: true }}
-                                transition={{ duration: 0.4, delay: index * 0.2 + 0.6 }}
-                                whileHover={{ scale: 1.05 }}
                             >
                                 {milestone.stats}
-                            </motion.div>
+                            </div>
 
                             {/* Progress indicator */}
-                            <motion.div 
+                            <div 
                                 style={{
                                     position: 'absolute',
                                     bottom: '0',
@@ -320,11 +282,7 @@ export default function KeyMilestones() {
                                     background: `linear-gradient(90deg, ${milestone.color}, ${milestone.color}dd)`,
                                     borderRadius: '0 0 20px 20px'
                                 }}
-                                initial={{ width: 0 }}
-                                whileInView={{ width: '100%' }}
-                                viewport={{ once: true }}
-                                transition={{ duration: 0.8, delay: index * 0.2 + 0.7 }}
-                            ></motion.div>
+                            ></div>
                         </motion.div>
                     ))}
                 </motion.div>
