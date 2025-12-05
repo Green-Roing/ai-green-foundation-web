@@ -68,7 +68,7 @@ export default function Footer() {
                                 </p>
                                 
                                 {/* Social Media Icons */}
-                                <div style={{ display: 'flex', gap: '15px', marginTop: '15px' }}>
+                                <div style={{ display: 'flex', gap: '15px', marginTop: '15px' ,justifyContent: 'center'}}>
                                     <a
                                         href="https://www.facebook.com/profile.php?id=61565108856666&mibextid=rS40aB7S9Ucbxw6v"
                                         target="_blank"

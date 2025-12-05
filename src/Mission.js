@@ -1,7 +1,8 @@
 export default function Mission() {
     return (
-        <section className="mission-section" style={{ textAlign: 'center', backgroundColor: '#5a900f' }}>
-            <div className="container" style={{ backgroundColor: '#5a900f'}}>
+        <section className="mission-section" style={{ textAlign: 'center',    background: "linear-gradient(135deg, #27ae60 0%, #2ecc71 100%)",
+   }}>
+            <div className="container" style={{   }}>
                 <div className="row">
                     <div className="col-12 mb-4">
                         <h2 style={{ fontSize: '2.5rem', color: '#ffffff', marginBottom: '30px', fontWeight: 'bold', marginTop: "30px" }}>Our Mission & Vision</h2>
@@ -16,7 +17,7 @@ export default function Mission() {
                             backgroundImage: 'url("https://www.ecowatch.com/wp-content/uploads/2022/07/earth-from-space.jpg")',
                             backgroundSize: 'cover',
                             backgroundPosition: 'center',
-                            color: '#5a900f',
+                            color: ' #27ae60',
                             boxShadow: '0 8px 16px rgba(0, 0, 0, 0.2)'
                         }}>
                             <div className="icon-box" style={{ marginBottom: '20px' }}>
@@ -38,7 +39,7 @@ export default function Mission() {
                             backgroundImage: 'url("https://cdn.pixabay.com/photo/2020/10/29/05/23/sunset-5694964_960_720.jpg")',
                             backgroundSize: 'cover',
                             backgroundPosition: 'center',
-                            color: '#5a900f',
+                            color: ' #27ae60',
                             boxShadow: '0 8px 16px rgba(0, 0, 0, 0.2)'
                         }}>
                             <div className="icon-box" style={{ marginBottom: '20px' }}>
