@@ -35,7 +35,7 @@ export default function KeyMilestones() {
         <motion.section 
             style={{
                 padding: '80px 20px',
-                background: 'linear-gradient(135deg, #74b9ff 0%, #0984e3 100%)',
+              background: "linear-gradient(135deg, #27ae60 0%, #2ecc71 100%)",
                 position: 'relative',
                 overflow: 'hidden'
             }}
