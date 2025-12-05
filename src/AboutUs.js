@@ -5,6 +5,7 @@ import KeyMilestones from "./Keymilestones";
 import Projects from "./Projects";
 import Images from "./Images";
 import GreenRoing from "./GreenRoing";
+import MobileApp from "./MobileApp";
 
 export default function AboutUs() {
   return (
@@ -33,6 +34,7 @@ export default function AboutUs() {
         <Mission />
         <Projects/>
         <GreenRoing />
+        <MobileApp />
         <Footer />
     </div>
   );

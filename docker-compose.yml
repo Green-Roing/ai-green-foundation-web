@@ -1,0 +1,8 @@
+version: '3.8'
+
+services:
+  ai-green-foundation:
+    image: thealoksingh/ai-green-foundation:latest
+    ports:
+      - "3051:3051"
+    restart: unless-stopped
