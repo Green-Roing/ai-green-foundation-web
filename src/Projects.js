@@ -1,4 +1,5 @@
 import Programs from "./Programs";
+import { motion } from "framer-motion";
 
 export default function Projects() {
     const programs = [
@@ -48,101 +49,168 @@ export default function Projects() {
     ];
 
     return (
-        <>
+        <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+        >
             {/* Enhanced Header Section */}
-            <section style={{ 
-                background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-                padding: '80px 20px',
-                textAlign: 'center',
-                color: 'white',
-                position: 'relative',
-                overflow: 'hidden'
-            }}>
-                {/* Animated background elements */}
-                <div style={{
-                    position: 'absolute',
-                    top: '10%',
-                    left: '10%',
-                    width: '100px',
-                    height: '100px',
-                    background: 'rgba(255,255,255,0.1)',
-                    borderRadius: '50%',
-                    animation: 'float 6s ease-in-out infinite'
-                }}></div>
-                
-                <div style={{
-                    position: 'absolute',
-                    top: '60%',
-                    right: '15%',
-                    width: '60px',
-                    height: '60px',
-                    background: 'rgba(255,255,255,0.1)',
-                    borderRadius: '50%',
-                    animation: 'float 4s ease-in-out infinite 2s'
-                }}></div>
-
-                <div style={{
+            <motion.section 
+                style={{ 
+                    background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                    padding: '80px 20px',
+                    textAlign: 'center',
+                    color: 'white',
                     position: 'relative',
-                    zIndex: 2
-                }}>
-                    <h1 style={{ 
-                        fontSize: '3.2rem', 
-                        fontWeight: 'bold',
-                        marginBottom: '20px',
-                        textShadow: '2px 2px 4px rgba(0,0,0,0.3)',
-                        animation: 'slideInDown 1s ease-out'
-                    }}>
-                        Our Programs & Initiatives
-                    </h1>
-                    
-                    <div style={{
+                    overflow: 'hidden'
+                }}
+                initial={{ opacity: 0, y: -50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8 }}
+            >
+                {/* Animated background elements */}
+                <motion.div 
+                    style={{
+                        position: 'absolute',
+                        top: '10%',
+                        left: '10%',
                         width: '100px',
-                        height: '4px',
-                        background: 'linear-gradient(45deg, #27ae60, #2ecc71)',
-                        margin: '0 auto 30px',
-                        borderRadius: '2px',
-                        animation: 'slideInUp 1s ease-out 0.3s both'
-                    }}></div>
+                        height: '100px',
+                        background: 'rgba(255,255,255,0.1)',
+                        borderRadius: '50%'
+                    }}
+                    animate={{ 
+                        y: [0, -20, 0],
+                        rotate: [0, 180, 360]
+                    }}
+                    transition={{ 
+                        duration: 6, 
+                        repeat: Infinity, 
+                        ease: "easeInOut" 
+                    }}
+                ></motion.div>
+                
+                <motion.div 
+                    style={{
+                        position: 'absolute',
+                        top: '60%',
+                        right: '15%',
+                        width: '60px',
+                        height: '60px',
+                        background: 'rgba(255,255,255,0.1)',
+                        borderRadius: '50%'
+                    }}
+                    animate={{ 
+                        y: [0, -20, 0],
+                        rotate: [0, -180, -360]
+                    }}
+                    transition={{ 
+                        duration: 4, 
+                        repeat: Infinity, 
+                        ease: "easeInOut",
+                        delay: 2
+                    }}
+                ></motion.div>
+
+                <motion.div 
+                    style={{
+                        position: 'relative',
+                        zIndex: 2
+                    }}
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6, delay: 0.2 }}
+                >
+                    <motion.h1 
+                        style={{ 
+                            fontSize: '3.2rem', 
+                            fontWeight: 'bold',
+                            marginBottom: '20px',
+                            textShadow: '2px 2px 4px rgba(0,0,0,0.3)'
+                        }}
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.6, delay: 0.3 }}
+                    >
+                        Our Programs & Initiatives
+                    </motion.h1>
                     
-                    <p style={{ 
-                        fontSize: '1.3rem',
-                        opacity: '0.9',
-                        maxWidth: '800px',
-                        margin: '0 auto',
-                        textShadow: '1px 1px 2px rgba(0,0,0,0.2)',
-                        animation: 'slideInUp 1s ease-out 0.6s both'
-                    }}>
+                    <motion.div 
+                        style={{
+                            width: '100px',
+                            height: '4px',
+                            background: 'linear-gradient(45deg, #27ae60, #2ecc71)',
+                            margin: '0 auto 30px',
+                            borderRadius: '2px'
+                        }}
+                        initial={{ width: 0 }}
+                        whileInView={{ width: '100px' }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.8, delay: 0.5 }}
+                    ></motion.div>
+                    
+                    <motion.p 
+                        style={{ 
+                            fontSize: '1.3rem',
+                            opacity: '0.9',
+                            maxWidth: '800px',
+                            margin: '0 auto',
+                            textShadow: '1px 1px 2px rgba(0,0,0,0.2)'
+                        }}
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 0.9, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.6, delay: 0.6 }}
+                    >
                         Creating Impact through Environmental Conservation and Community Welfare
-                    </p>
-                </div>
-            </section>
+                    </motion.p>
+                </motion.div>
+            </motion.section>
 
             {/* Enhanced Programs Section */}
-            <section style={{ 
-                padding: '80px 20px',
-                background: 'linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)',
-                position: 'relative'
-            }}>
+            <motion.section 
+                style={{ 
+                    padding: '80px 20px',
+                    background: 'linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)',
+                    position: 'relative'
+                }}
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+            >
                 {/* Decorative elements */}
-                <div style={{
-                    position: 'absolute',
-                    top: '20px',
-                    left: '5%',
-                    width: '200px',
-                    height: '200px',
-                    background: 'radial-gradient(circle, rgba(39, 174, 96, 0.1) 0%, transparent 70%)',
-                    borderRadius: '50%'
-                }}></div>
+                <motion.div 
+                    style={{
+                        position: 'absolute',
+                        top: '20px',
+                        left: '5%',
+                        width: '200px',
+                        height: '200px',
+                        background: 'radial-gradient(circle, rgba(39, 174, 96, 0.1) 0%, transparent 70%)',
+                        borderRadius: '50%'
+                    }}
+                    animate={{ scale: [1, 1.1, 1] }}
+                    transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                ></motion.div>
                 
-                <div style={{
-                    position: 'absolute',
-                    bottom: '20px',
-                    right: '5%',
-                    width: '150px',
-                    height: '150px',
-                    background: 'radial-gradient(circle, rgba(52, 152, 219, 0.1) 0%, transparent 70%)',
-                    borderRadius: '50%'
-                }}></div>
+                <motion.div 
+                    style={{
+                        position: 'absolute',
+                        bottom: '20px',
+                        right: '5%',
+                        width: '150px',
+                        height: '150px',
+                        background: 'radial-gradient(circle, rgba(52, 152, 219, 0.1) 0%, transparent 70%)',
+                        borderRadius: '50%'
+                    }}
+                    animate={{ scale: [1, 1.2, 1] }}
+                    transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+                ></motion.div>
 
                 <div style={{
                     maxWidth: '1400px',
@@ -150,19 +218,26 @@ export default function Projects() {
                     position: 'relative',
                     zIndex: 1
                 }}>
-                    <div style={{
-                        display: 'grid',
-                        gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))',
-                        gap: '20px',
-                        maxWidth: '1400px',
-                        margin: '0 auto'
-                    }}>
+                    <motion.div 
+                        style={{
+                            display: 'grid',
+                            gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))',
+                            gap: '20px',
+                            maxWidth: '1400px',
+                            margin: '0 auto'
+                        }}
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.6, delay: 0.4 }}
+                    >
                         {programs.map((program, index) => (
-                            <div
+                            <motion.div
                                 key={index}
-                                style={{
-                                    animation: `slideInUp 0.6s ease-out ${index * 0.1}s both`
-                                }}
+                                initial={{ opacity: 0, y: 50 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ duration: 0.6, delay: index * 0.1 }}
                             >
                                 <Programs
                                     programTitle={program.programTitle}
@@ -171,58 +246,11 @@ export default function Projects() {
                                     image={program.image}
                                     iconColor={program.iconColor}
                                 />
-                            </div>
+                            </motion.div>
                         ))}
-                    </div>
+                    </motion.div>
                 </div>
-            </section>
-
-            {/* Add CSS animations */}
-            <style jsx>{`
-                @keyframes float {
-                    0%, 100% { 
-                        transform: translateY(0px) rotate(0deg); 
-                    }
-                    50% { 
-                        transform: translateY(-20px) rotate(180deg); 
-                    }
-                }
-                
-                @keyframes slideInDown {
-                    from {
-                        opacity: 0;
-                        transform: translateY(-50px);
-                    }
-                    to {
-                        opacity: 1;
-                        transform: translateY(0);
-                    }
-                }
-                
-                @keyframes slideInUp {
-                    from {
-                        opacity: 0;
-                        transform: translateY(50px);
-                    }
-                    to {
-                        opacity: 1;
-                        transform: translateY(0);
-                    }
-                }
-                
-                @media (max-width: 768px) {
-                    h1 {
-                        font-size: 2.5rem !important;
-                    }
-                    p {
-                        font-size: 1.1rem !important;
-                    }
-                    div[style*="grid-template-columns"] {
-                        grid-template-columns: 1fr !important;
-                        gap: 15px !important;
-                    }
-                }
-            `}</style>
-        </>
+            </motion.section>
+        </motion.div>
     )
 }

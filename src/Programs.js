@@ -1,4 +1,5 @@
 import {useState} from "react";
+import { motion } from "framer-motion";
 
 export default function Programs({ programTitle, programDesc, programBody, image, iconColor }) {
     const [showOverlay, setShowOverlay] = useState(false);
@@ -7,8 +8,15 @@ export default function Programs({ programTitle, programDesc, programBody, image
     const toggleOverlay = () => setShowOverlay(!showOverlay);
 
     return (
-        <div style={{ position: 'relative', marginBottom: '20px' }}>
-            <div
+        <motion.div 
+            style={{ position: 'relative', marginBottom: '20px' }}
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            whileHover={{ y: -5 }}
+        >
+            <motion.div
                 className="program-card"
                 style={{
                     backgroundColor: 'white',
@@ -32,34 +40,44 @@ export default function Programs({ programTitle, programDesc, programBody, image
                 }}
                 onMouseEnter={() => setIsHovered(true)}
                 onMouseLeave={() => setIsHovered(false)}
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
             >
                 {/* Decorative background elements */}
-                <div style={{
-                    position: 'absolute',
-                    top: '-50px',
-                    right: '-50px',
-                    width: '100px',
-                    height: '100px',
-                    background: `linear-gradient(45deg, ${iconColor || '#27ae60'}, ${iconColor || '#2ecc71'})`,
-                    borderRadius: '50%',
-                    opacity: '0.1',
-                    transition: 'all 0.3s ease'
-                }}></div>
+                <motion.div 
+                    style={{
+                        position: 'absolute',
+                        top: '-50px',
+                        right: '-50px',
+                        width: '100px',
+                        height: '100px',
+                        background: `linear-gradient(45deg, ${iconColor || '#27ae60'}, ${iconColor || '#2ecc71'})`,
+                        borderRadius: '50%',
+                        opacity: '0.1',
+                        transition: 'all 0.3s ease'
+                    }}
+                    animate={{ rotate: 360 }}
+                    transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                ></motion.div>
 
-                <div style={{
-                    position: 'absolute',
-                    bottom: '-30px',
-                    left: '-30px',
-                    width: '60px',
-                    height: '60px',
-                    background: `linear-gradient(45deg, ${iconColor || '#27ae60'}, ${iconColor || '#2ecc71'})`,
-                    borderRadius: '50%',
-                    opacity: '0.05',
-                    transition: 'all 0.3s ease'
-                }}></div>
+                <motion.div 
+                    style={{
+                        position: 'absolute',
+                        bottom: '-30px',
+                        left: '-30px',
+                        width: '60px',
+                        height: '60px',
+                        background: `linear-gradient(45deg, ${iconColor || '#27ae60'}, ${iconColor || '#2ecc71'})`,
+                        borderRadius: '50%',
+                        opacity: '0.05',
+                        transition: 'all 0.3s ease'
+                    }}
+                    animate={{ rotate: -360 }}
+                    transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
+                ></motion.div>
 
                 <div>
-                    <div
+                    <motion.div
                         className="icon"
                         style={{ 
                             fontSize: '60px', 
@@ -69,9 +87,11 @@ export default function Programs({ programTitle, programDesc, programBody, image
                             transform: isHovered ? 'scale(1.1) rotate(5deg)' : 'scale(1)',
                             textShadow: '0 4px 8px rgba(0,0,0,0.1)'
                         }}
+                        whileHover={{ scale: 1.2, rotate: 10 }}
+                        transition={{ type: "spring", stiffness: 300 }}
                     >
                         {image === "greenRoingLogo" ? (
-                            <img 
+                            <motion.img 
                                 src={`${process.env.PUBLIC_URL}/grLogo.png`} 
                                 alt="AI Green Foundation" 
                                 height="80px" 
@@ -81,40 +101,51 @@ export default function Programs({ programTitle, programDesc, programBody, image
                                     transform: isHovered ? 'scale(1.1)' : 'scale(1)',
                                     filter: 'drop-shadow(0 4px 8px rgba(0,0,0,0.1))'
                                 }}
+                                whileHover={{ scale: 1.2, rotate: 5 }}
                             />
                         ) : (
                             <i className={image}></i>
                         )}
-                    </div>
+                    </motion.div>
                     
-                    <h3 style={{ 
-                        fontSize: '1.4rem', 
-                        marginBottom: '15px',
-                        color: '#2c3e50',
-                        fontWeight: '700',
-                        textShadow: '0 2px 4px rgba(0,0,0,0.1)',
-                        transition: 'all 0.3s ease'
-                    }}>
+                    <motion.h3 
+                        style={{ 
+                            fontSize: '1.4rem', 
+                            marginBottom: '15px',
+                            color: '#2c3e50',
+                            fontWeight: '700',
+                            textShadow: '0 2px 4px rgba(0,0,0,0.1)',
+                            transition: 'all 0.3s ease'
+                        }}
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
+                        transition={{ delay: 0.2 }}
+                    >
                         {programTitle}
-                    </h3>
+                    </motion.h3>
                     
-                    <p style={{
-                        fontSize: '0.95rem',
-                        color: '#7f8c8d',
-                        overflow: 'hidden',
-                        textOverflow: 'ellipsis',
-                        display: '-webkit-box',
-                        WebkitLineClamp: 3,
-                        WebkitBoxOrient: 'vertical',
-                        flexGrow: 1,
-                        lineHeight: '1.6',
-                        marginBottom: '20px'
-                    }}>
+                    <motion.p 
+                        style={{
+                            fontSize: '0.95rem',
+                            color: '#7f8c8d',
+                            overflow: 'hidden',
+                            textOverflow: 'ellipsis',
+                            display: '-webkit-box',
+                            WebkitLineClamp: 3,
+                            WebkitBoxOrient: 'vertical',
+                            flexGrow: 1,
+                            lineHeight: '1.6',
+                            marginBottom: '20px'
+                        }}
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
+                        transition={{ delay: 0.3 }}
+                    >
                         {programDesc}
-                    </p>
+                    </motion.p>
                 </div>
 
-                <button
+                <motion.button
                     className="btn"
                     onClick={() => {
                         if (programTitle === "Green Roing Initiative") {
@@ -142,17 +173,12 @@ export default function Programs({ programTitle, programDesc, programBody, image
                         position: 'relative',
                         overflow: 'hidden'
                     }}
-                    onMouseEnter={(e) => {
-                        e.target.style.transform = 'translateY(-2px) scale(1.05)';
-                        e.target.style.boxShadow = '0 12px 35px rgba(39, 174, 96, 0.4)';
-                    }}
-                    onMouseLeave={(e) => {
-                        e.target.style.transform = 'translateY(0) scale(1)';
-                        e.target.style.boxShadow = '0 8px 25px rgba(39, 174, 96, 0.3)';
-                    }}
+                    whileHover={{ scale: 1.05, y: -2 }}
+                    whileTap={{ scale: 0.95 }}
+                    transition={{ type: "spring", stiffness: 300 }}
                 >
                     <span style={{ position: 'relative', zIndex: 1 }}>Learn More</span>
-                    <i 
+                    <motion.i 
                         className="fas fa-arrow-right" 
                         style={{ 
                             marginLeft: '10px',
@@ -160,24 +186,13 @@ export default function Programs({ programTitle, programDesc, programBody, image
                             position: 'relative',
                             zIndex: 1
                         }}
-                    ></i>
-                    
-                    {/* Button shine effect */}
-                    <div style={{
-                        position: 'absolute',
-                        top: 0,
-                        left: '-100%',
-                        width: '100%',
-                        height: '100%',
-                        background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent)',
-                        transition: 'left 0.5s ease',
-                        pointerEvents: 'none'
-                    }}></div>
-                </button>
-            </div>
+                        whileHover={{ x: 5 }}
+                    ></motion.i>
+                </motion.button>
+            </motion.div>
 
             {showOverlay && (
-                <div
+                <motion.div
                     className="overlay-card"
                     style={{
                         position: 'absolute',
@@ -192,31 +207,43 @@ export default function Programs({ programTitle, programDesc, programBody, image
                         textAlign: 'left',
                         overflowY: 'auto',
                         maxHeight: '450px',
-                        animation: 'slideIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
                         border: '1px solid rgba(255,255,255,0.2)',
                         backdropFilter: 'blur(10px)'
                     }}
+                    initial={{ opacity: 0, scale: 0.8, y: 20 }}
+                    animate={{ opacity: 1, scale: 1, y: 0 }}
+                    exit={{ opacity: 0, scale: 0.8, y: 20 }}
+                    transition={{ type: "spring", stiffness: 300, damping: 30 }}
                 >
-                    <h3 style={{ 
-                        fontSize: '1.6rem', 
-                        marginBottom: '25px',
-                        color: '#2c3e50',
-                        fontWeight: '700',
-                        textShadow: '0 2px 4px rgba(0,0,0,0.1)'
-                    }}>
+                    <motion.h3 
+                        style={{ 
+                            fontSize: '1.6rem', 
+                            marginBottom: '25px',
+                            color: '#2c3e50',
+                            fontWeight: '700',
+                            textShadow: '0 2px 4px rgba(0,0,0,0.1)'
+                        }}
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.1 }}
+                    >
                         {programTitle}
-                    </h3>
+                    </motion.h3>
                     
-                    <div style={{
-                        fontSize: '1rem', 
-                        color: '#34495e',
-                        lineHeight: '1.7',
-                        marginBottom: '20px'
-                    }}
+                    <motion.div 
+                        style={{
+                            fontSize: '1rem', 
+                            color: '#34495e',
+                            lineHeight: '1.7',
+                            marginBottom: '20px'
+                        }}
                         dangerouslySetInnerHTML={{ __html: programBody }}
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.2 }}
                     />
                     
-                    <button
+                    <motion.button
                         onClick={toggleOverlay}
                         style={{
                             position: 'absolute',
@@ -235,32 +262,13 @@ export default function Programs({ programTitle, programDesc, programBody, image
                             justifyContent: 'center',
                             boxShadow: '0 4px 15px rgba(231, 76, 60, 0.3)'
                         }}
-                        onMouseEnter={(e) => {
-                            e.target.style.transform = 'scale(1.1) rotate(90deg)';
-                            e.target.style.boxShadow = '0 6px 20px rgba(231, 76, 60, 0.4)';
-                        }}
-                        onMouseLeave={(e) => {
-                            e.target.style.transform = 'scale(1) rotate(0deg)';
-                            e.target.style.boxShadow = '0 4px 15px rgba(231, 76, 60, 0.3)';
-                        }}
+                        whileHover={{ scale: 1.1, rotate: 90 }}
+                        whileTap={{ scale: 0.9 }}
                     >
                         <i className="fas fa-times" style={{ fontSize: '16px' }}></i>
-                    </button>
-                </div>
+                    </motion.button>
+                </motion.div>
             )}
-
-            <style jsx>{`
-                @keyframes slideIn {
-                    from {
-                        opacity: 0;
-                        transform: translateY(-20px) scale(0.95);
-                    }
-                    to {
-                        opacity: 1;
-                        transform: translateY(0) scale(1);
-                    }
-                }
-            `}</style>
-        </div>
+        </motion.div>
     );
 }

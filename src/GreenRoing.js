@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { motion } from 'framer-motion';
 
 export default function GreenRoing() {
     const [expandedIndex, setExpandedIndex] = useState(null);
@@ -54,34 +55,61 @@ export default function GreenRoing() {
     ];
 
     return (
-        <section style={{
-            padding: '80px 20px',
-            background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-            position: 'relative',
-            overflow: 'hidden'
-        }}>
+        <motion.section 
+            style={{
+                padding: '80px 20px',
+                background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                position: 'relative',
+                overflow: 'hidden'
+            }}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+        >
             {/* Animated background elements */}
-            <div style={{
-                position: 'absolute',
-                top: '10%',
-                left: '5%',
-                width: '200px',
-                height: '200px',
-                background: 'radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%)',
-                borderRadius: '50%',
-                animation: 'float 8s ease-in-out infinite'
-            }}></div>
+            <motion.div 
+                style={{
+                    position: 'absolute',
+                    top: '10%',
+                    left: '5%',
+                    width: '200px',
+                    height: '200px',
+                    background: 'radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%)',
+                    borderRadius: '50%'
+                }}
+                animate={{ 
+                    y: [0, -20, 0],
+                    rotate: [0, 180, 360]
+                }}
+                transition={{ 
+                    duration: 8, 
+                    repeat: Infinity, 
+                    ease: "easeInOut" 
+                }}
+            ></motion.div>
             
-            <div style={{
-                position: 'absolute',
-                bottom: '10%',
-                right: '5%',
-                width: '150px',
-                height: '150px',
-                background: 'radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%)',
-                borderRadius: '50%',
-                animation: 'float 6s ease-in-out infinite 2s'
-            }}></div>
+            <motion.div 
+                style={{
+                    position: 'absolute',
+                    bottom: '10%',
+                    right: '5%',
+                    width: '150px',
+                    height: '150px',
+                    background: 'radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%)',
+                    borderRadius: '50%'
+                }}
+                animate={{ 
+                    y: [0, -20, 0],
+                    rotate: [0, -180, -360]
+                }}
+                transition={{ 
+                    duration: 6, 
+                    repeat: Infinity, 
+                    ease: "easeInOut",
+                    delay: 2
+                }}
+            ></motion.div>
 
             <div style={{
                 maxWidth: '1400px',
@@ -90,71 +118,103 @@ export default function GreenRoing() {
                 zIndex: 2
             }}>
                 {/* Header Section */}
-                <div style={{
-                    textAlign: 'center',
-                    marginBottom: '60px',
-                    color: 'white'
-                }}>
-                    <div style={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        marginBottom: '30px',
-                        gap: '20px'
-                    }}>
-                        <img
+                <motion.div 
+                    style={{
+                        textAlign: 'center',
+                        marginBottom: '60px',
+                        color: 'white'
+                    }}
+                    initial={{ opacity: 0, y: -30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6 }}
+                >
+                    <motion.div 
+                        style={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            marginBottom: '30px',
+                            gap: '20px'
+                        }}
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.6, delay: 0.2 }}
+                    >
+                        <motion.img
                             src={`${process.env.PUBLIC_URL}/grLogo.png`}
                             alt="Green Roing Logo"
                             style={{
                                 width: '100px',
                                 height: '100px',
-                                background: 'white',
-                                borderRadius: '8%',
-                                padding: '4px',
-                                // boxShadow: '0 10px 30px rgba(0,0,0,0.3)',
-                                animation: 'pulse 2s ease-in-out infinite'
+                                borderRadius: '12%',
+                                boxShadow: '0 10px 30px rgba(0, 0, 0, 0.15)'
                             }}
+                          
+                          
                         />
                         <div>
-                            <h2 style={{
-                                fontSize: '3rem',
-                                fontWeight: 'bold',
-                                margin: '0',
-                                textShadow: '2px 2px 4px rgba(0,0,0,0.3)',
-                                animation: 'slideInRight 1s ease-out'
-                            }}>
+                            <motion.h2 
+                                style={{
+                                    fontSize: '3rem',
+                                    fontWeight: 'bold',
+                                    margin: '0',
+                                    textShadow: '2px 2px 4px rgba(0,0,0,0.3)'
+                                }}
+                                initial={{ opacity: 0, x: 50 }}
+                                whileInView={{ opacity: 1, x: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ duration: 0.6, delay: 0.3 }}
+                            >
                                 Empowering Change
-                            </h2>
-                            <p style={{
-                                fontSize: '1.3rem',
-                                margin: '10px 0 0 0',
-                                opacity: '0.9',
-                                textShadow: '1px 1px 2px rgba(0,0,0,0.2)',
-                                animation: 'slideInRight 1s ease-out 0.3s both'
-                            }}>
+                            </motion.h2>
+                            <motion.p 
+                                style={{
+                                    fontSize: '1.3rem',
+                                    margin: '10px 0 0 0',
+                                    opacity: '0.9',
+                                    textShadow: '1px 1px 2px rgba(0,0,0,0.2)'
+                                }}
+                                initial={{ opacity: 0, x: 50 }}
+                                whileInView={{ opacity: 0.9, x: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ duration: 0.6, delay: 0.4 }}
+                            >
                                 The Green Roing Initiative
-                            </p>
+                            </motion.p>
                         </div>
-                    </div>
+                    </motion.div>
                     
-                    <div style={{
-                        width: '100px',
-                        height: '4px',
-                        background: 'linear-gradient(45deg, #27ae60, #2ecc71)',
-                        margin: '0 auto',
-                        borderRadius: '2px',
-                        animation: 'slideInUp 1s ease-out 0.6s both'
-                    }}></div>
-                </div>
+                    <motion.div 
+                        style={{
+                            width: '100px',
+                            height: '4px',
+                            background: 'linear-gradient(45deg, #27ae60, #2ecc71)',
+                            margin: '0 auto',
+                            borderRadius: '2px'
+                        }}
+                        initial={{ width: 0 }}
+                        whileInView={{ width: '100px' }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.8, delay: 0.6 }}
+                    ></motion.div>
+                </motion.div>
 
                 {/* Cards Grid */}
-                <div style={{
-                    display: 'grid',
-                    gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))',
-                    gap: '25px'
-                }}>
+                <motion.div 
+                    style={{
+                        display: 'grid',
+                        gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))',
+                        gap: '25px'
+                    }}
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6, delay: 0.4 }}
+                >
                     {sections.map((section, index) => (
-                        <div
+                        <motion.div
                             key={index}
                             style={{
                                 background: 'rgba(255, 255, 255, 0.95)',
@@ -170,167 +230,153 @@ export default function GreenRoing() {
                                     : 'translateY(0) scale(1)',
                                 transition: 'all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
                                 cursor: 'pointer',
-                                animation: `slideInUp 0.6s ease-out ${index * 0.1}s both`,
                                 backdropFilter: 'blur(10px)',
                                 border: '1px solid rgba(255,255,255,0.2)'
                             }}
                             onMouseEnter={() => setHoveredCard(index)}
                             onMouseLeave={() => setHoveredCard(null)}
                             onClick={() => toggleExpand(index)}
+                            initial={{ opacity: 0, y: 50 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.6, delay: index * 0.1 }}
+                            whileHover={{ y: -10, scale: 1.02 }}
+                            whileTap={{ scale: 0.98 }}
                         >
                             {/* Decorative background element */}
-                            <div style={{
-                                position: 'absolute',
-                                top: '-50px',
-                                right: '-50px',
-                                width: '100px',
-                                height: '100px',
-                                background: `linear-gradient(45deg, ${section.color}, ${section.color}99)`,
-                                borderRadius: '50%',
-                                opacity: '0.1',
-                                transition: 'all 0.3s ease'
-                            }}></div>
+                            <motion.div 
+                                style={{
+                                    position: 'absolute',
+                                    top: '-50px',
+                                    right: '-50px',
+                                    width: '100px',
+                                    height: '100px',
+                                    background: `linear-gradient(45deg, ${section.color}, ${section.color}99)`,
+                                    borderRadius: '50%',
+                                    opacity: '0.1',
+                                    transition: 'all 0.3s ease'
+                                }}
+                                animate={{ rotate: 360 }}
+                                transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                            ></motion.div>
 
                             {/* Icon and Title */}
-                            <div style={{
-                                display: 'flex',
-                                alignItems: 'center',
-                                gap: '15px',
-                                marginBottom: '20px'
-                            }}>
-                                <span style={{
-                                    fontSize: '3.5rem',
-                                    filter: 'drop-shadow(0 4px 8px rgba(0,0,0,0.1))',
-                                    transition: 'transform 0.3s ease',
-                                    transform: hoveredCard === index ? 'scale(1.1) rotate(5deg)' : 'scale(1)'
-                                }}>
+                            <motion.div 
+                                style={{
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    gap: '15px',
+                                    marginBottom: '20px'
+                                }}
+                                initial={{ opacity: 0, x: -20 }}
+                                whileInView={{ opacity: 1, x: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ duration: 0.4, delay: index * 0.1 + 0.2 }}
+                            >
+                                <motion.span 
+                                    style={{
+                                        fontSize: '3.5rem',
+                                        filter: 'drop-shadow(0 4px 8px rgba(0,0,0,0.1))',
+                                        transition: 'transform 0.3s ease',
+                                        transform: hoveredCard === index ? 'scale(1.1) rotate(5deg)' : 'scale(1)'
+                                    }}
+                                    whileHover={{ scale: 1.2, rotate: 10 }}
+                                    transition={{ type: "spring", stiffness: 300 }}
+                                >
                                     {section.icon}
-                                </span>
-                                <h3 style={{
-                                    fontSize: '1.4rem',
-                                    fontWeight: '700',
-                                    color: '#2c3e50',
-                                    margin: '0',
-                                    textShadow: '0 2px 4px rgba(0,0,0,0.1)'
-                                }}>
+                                </motion.span>
+                                <motion.h3 
+                                    style={{
+                                        fontSize: '1.4rem',
+                                        fontWeight: '700',
+                                        color: '#2c3e50',
+                                        margin: '0',
+                                        textShadow: '0 2px 4px rgba(0,0,0,0.1)'
+                                    }}
+                                    initial={{ opacity: 0, y: 10 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ duration: 0.4, delay: index * 0.1 + 0.3 }}
+                                >
                                     {section.title}
-                                </h3>
-                            </div>
+                                </motion.h3>
+                            </motion.div>
 
-                            <p style={{
-                                fontSize: '1rem',
-                                color: '#7f8c8d',
-                                lineHeight: '1.6',
-                                marginBottom: expandedIndex === index ? '20px' : '0'
-                            }}>
+                            <motion.p 
+                                style={{
+                                    fontSize: '1rem',
+                                    color: '#7f8c8d',
+                                    lineHeight: '1.6',
+                                    marginBottom: expandedIndex === index ? '20px' : '0'
+                                }}
+                                initial={{ opacity: 0, y: 10 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ duration: 0.4, delay: index * 0.1 + 0.4 }}
+                            >
                                 {section.description}
-                            </p>
+                            </motion.p>
 
                             {/* Expanded Details */}
                             {expandedIndex === index && (
-                                <div style={{
-                                    padding: '20px',
-                                    background: `linear-gradient(135deg, ${section.color}15, ${section.color}05)`,
-                                    borderRadius: '15px',
-                                    marginTop: '15px',
-                                    border: `2px solid ${section.color}30`,
-                                    animation: 'expandIn 0.3s ease-out'
-                                }}>
-                                    <p style={{
-                                        fontSize: '0.95rem',
-                                        color: '#34495e',
-                                        lineHeight: '1.7',
-                                        margin: '0'
-                                    }}>
+                                <motion.div 
+                                    style={{
+                                        padding: '20px',
+                                        background: `linear-gradient(135deg, ${section.color}15, ${section.color}05)`,
+                                        borderRadius: '15px',
+                                        marginTop: '15px',
+                                        border: `2px solid ${section.color}30`
+                                    }}
+                                    initial={{ opacity: 0, height: 0 }}
+                                    animate={{ opacity: 1, height: 'auto' }}
+                                    exit={{ opacity: 0, height: 0 }}
+                                    transition={{ duration: 0.3 }}
+                                >
+                                    <motion.p 
+                                        style={{
+                                            fontSize: '0.95rem',
+                                            color: '#34495e',
+                                            lineHeight: '1.7',
+                                            margin: '0'
+                                        }}
+                                        initial={{ opacity: 0, y: 10 }}
+                                        animate={{ opacity: 1, y: 0 }}
+                                        transition={{ duration: 0.3, delay: 0.1 }}
+                                    >
                                         {section.details}
-                                    </p>
-                                </div>
+                                    </motion.p>
+                                </motion.div>
                             )}
 
                             {/* Expand/Collapse Button */}
-                            <button style={{
-                                position: 'absolute',
-                                bottom: '20px',
-                                right: '20px',
-                                background: `linear-gradient(45deg, ${section.color}, ${section.color}dd)`,
-                                color: 'white',
-                                border: 'none',
-                                borderRadius: '50%',
-                                width: '40px',
-                                height: '40px',
-                                cursor: 'pointer',
-                                display: 'flex',
-                                alignItems: 'center',
-                                justifyContent: 'center',
-                                boxShadow: `0 4px 15px ${section.color}40`,
-                                transition: 'all 0.3s ease',
-                                transform: expandedIndex === index ? 'rotate(180deg)' : 'rotate(0deg)'
-                            }}>
+                            <motion.button 
+                                style={{
+                                    position: 'absolute',
+                                    bottom: '20px',
+                                    right: '20px',
+                                    background: `linear-gradient(45deg, ${section.color}, ${section.color}dd)`,
+                                    color: 'white',
+                                    border: 'none',
+                                    borderRadius: '50%',
+                                    width: '40px',
+                                    height: '40px',
+                                    cursor: 'pointer',
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    justifyContent: 'center',
+                                    boxShadow: `0 4px 15px ${section.color}40`,
+                                    transition: 'all 0.3s ease',
+                                    transform: expandedIndex === index ? 'rotate(180deg)' : 'rotate(0deg)'
+                                }}
+                                whileHover={{ scale: 1.1 }}
+                                whileTap={{ scale: 0.9 }}
+                            >
                                 <i className="fas fa-chevron-down" style={{ fontSize: '14px' }}></i>
-                            </button>
-                        </div>
+                            </motion.button>
+                        </motion.div>
                     ))}
-                </div>
+                </motion.div>
             </div>
-
-            {/* CSS Animations */}
-            <style jsx>{`
-                @keyframes float {
-                    0%, 100% { transform: translateY(0px) rotate(0deg); }
-                    50% { transform: translateY(-20px) rotate(180deg); }
-                }
-                
-                @keyframes pulse {
-                    0%, 100% { transform: scale(1); }
-                    50% { transform: scale(1.05); }
-                }
-                
-                @keyframes slideInRight {
-                    from {
-                        opacity: 0;
-                        transform: translateX(50px);
-                    }
-                    to {
-                        opacity: 1;
-                        transform: translateX(0);
-                    }
-                }
-                
-                @keyframes slideInUp {
-                    from {
-                        opacity: 0;
-                        transform: translateY(50px);
-                    }
-                    to {
-                        opacity: 1;
-                        transform: translateY(0);
-                    }
-                }
-                
-                @keyframes expandIn {
-                    from {
-                        opacity: 0;
-                        transform: scaleY(0);
-                    }
-                    to {
-                        opacity: 1;
-                        transform: scaleY(1);
-                    }
-                }
-                
-                @media (max-width: 768px) {
-                    h2 {
-                        font-size: 2.2rem !important;
-                    }
-                    p {
-                        font-size: 1.1rem !important;
-                    }
-                    div[style*="grid-template-columns"] {
-                        grid-template-columns: 1fr !important;
-                        gap: 20px !important;
-                    }
-                }
-            `}</style>
-        </section>
+        </motion.section>
     );
 }

@@ -73,7 +73,7 @@ export default function Images() {
     return (
         <section style={{
             padding: '80px 20px',
-            background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+            background: 'linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%)',
             position: 'relative',
             overflow: 'hidden'
         }}>
@@ -113,12 +113,13 @@ export default function Images() {
                     color: 'white'
                 }}>
                     <h2 style={{
-                        fontSize: '3rem',
-                        fontWeight: 'bold',
-                        marginBottom: '20px',
-                        textShadow: '2px 2px 4px rgba(0,0,0,0.3)',
-                        animation: 'slideInDown 1s ease-out'
-                    }}>
+              fontSize: '2.5rem',
+              fontWeight: 'bold',
+              color: '#2c3e50',
+              marginBottom: '20px',
+              textShadow: '1px 1px 2px rgba(0,0,0,0.1)',
+              position: 'relative'
+            }}>
                         Our NGO Initiatives
                     </h2>
                     
@@ -136,7 +137,8 @@ export default function Images() {
                         opacity: '0.9',
                         maxWidth: '600px',
                         margin: '0 auto',
-                        textShadow: '1px 1px 2px rgba(0,0,0,0.2)',
+                       color: '#2c3e50',
+                       textShadow: '1px 1px 2px rgba(0,0,0,0.1)',
                         animation: 'slideInUp 1s ease-out 0.6s both'
                     }}>
                         Showcasing our impactful environmental and community initiatives
@@ -155,7 +157,7 @@ export default function Images() {
                         style={{
                             overflow: 'hidden',
                             borderRadius: '25px',
-                            boxShadow: '0 25px 50px rgba(0,0,0,0.3)',
+                            boxShadow: '0 15px 20px rgba(0,0,0,0.3)',
                             position: 'relative'
                         }}
                     >
@@ -333,7 +335,7 @@ export default function Images() {
                                         border: 'none',
                                         background: currentIndex === index 
                                             ? 'linear-gradient(45deg, #27ae60, #2ecc71)' 
-                                            : 'rgba(255,255,255,0.5)',
+                                            : '#2c3e50',
                                         cursor: 'pointer',
                                         transition: 'all 0.3s ease',
                                         boxShadow: currentIndex === index ? '0 2px 8px rgba(39, 174, 96, 0.4)' : 'none'
