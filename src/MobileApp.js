@@ -213,7 +213,7 @@ const MobileApp = () => {
               </button>
             </div>
             {/* Stats */}
-            <div
+            {/* <div
               style={{
                 display: "flex",
                 justifyContent:
@@ -231,7 +231,7 @@ const MobileApp = () => {
                     color: "white",
                   }}
                 >
-                  1.5K+
+                  10+
                 </div>
                 <div style={{ opacity: "0.8" }}>Downloads</div>
               </div>
@@ -243,7 +243,7 @@ const MobileApp = () => {
                     color: "white",
                   }}
                 >
-                  4.8★
+                  4.3★
                 </div>
                 <div style={{ opacity: "0.8" }}>Rating</div>
               </div>
@@ -255,11 +255,11 @@ const MobileApp = () => {
                     color: "white",
                   }}
                 >
-                  1K+
+                  7+
                 </div>
                 <div style={{ opacity: "0.8" }}>Active Users</div>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
